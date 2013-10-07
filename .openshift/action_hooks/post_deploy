@@ -1,5 +1,5 @@
 #!/bin/bash
-rest_framework_static_dir="~/app-root/repo/wsgi/static/rest_framework"
+rest_framework_static_dir="$OPENSHIFT_REPO_DIR/wsgi/static/rest_framework"
 if [ ! -L $rest_framework_static_dir ]; then
 	echo "Creating symlink for $rest_framework_static_dir"
 	ln -s $OPENSHIFT_PYTHON_DIR/virtenv/lib/python2.7/site-packages/djangorestframework-2.3.8-py2.7.egg/rest_framework/static/rest_framework/ $rest_framework_static_dir
