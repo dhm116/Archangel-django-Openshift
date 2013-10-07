@@ -9,5 +9,5 @@ setup(
     author='Your Name',
     author_email='example@example.com',
     url='http://www.python.org/sigs/distutils-sig/',
-    install_requires=['Django>=1.3','psycopg2', 'django_evolution', 'model_utils', 'djangorestframework', 'markdown', 'django-filter'],
+    install_requires=['Django>=1.3','psycopg2', 'django_evolution', 'django-model-utils', 'djangorestframework', 'markdown', 'django-filter'],
 )
