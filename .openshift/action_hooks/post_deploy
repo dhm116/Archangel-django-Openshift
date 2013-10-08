@@ -6,5 +6,5 @@ if [ ! -L $rest_framework_static_dir ]; then
 fi
 
 echo "Running database evolution"
-python $OPENSHFIT_REPO_DIR/wsgi/archangel/manage.py syncdb --noinput
-python $OPENSHFIT_REPO_DIR/wsgi/archangel/manage.py evolved --hint --exec
+python "$OPENSHFIT_REPO_DIR"/wsgi/archangel/manage.py syncdb --noinput
+python "$OPENSHFIT_REPO_DIR"/wsgi/archangel/manage.py evolved --hint --exec
