@@ -12,18 +12,36 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'django',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'] ,
-        'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'] ,
-        'HOST': '127.10.142.130',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-        # 'SSL': 'true',
+ON_OPENSHIFT = False
+if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+    ON_OPENSHIFT = True
+
+PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
+
+if ON_OPENSHIFT:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'django',                      # Or path to database file if using sqlite3.
+            # The following settings are not used with sqlite3:
+            'USER': os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'] ,
+            'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'] ,
+            'HOST': '127.10.142.130',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+            'PORT': '',                      # Set to empty string for default.
+            # 'SSL': 'true',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': os.path.join(PROJECT_DIR, 'sqlite3.db'),  # Or path to database file if using sqlite3.
+            'USER': '',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
+    }
 
 REST_FRAMEWORK = {
     # Use hyperlinked styles by default.
@@ -81,7 +99,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
