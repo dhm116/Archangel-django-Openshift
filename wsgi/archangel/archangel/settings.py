@@ -17,8 +17,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'django',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'adminvuu6nu1',
-        'PASSWORD': 'HcGbdwhvj9EW',
+        'USER': os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'] ,
+        'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'] ,
         'HOST': '127.10.142.130',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
         # 'SSL': 'true',
