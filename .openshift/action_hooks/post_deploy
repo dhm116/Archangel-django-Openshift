@@ -8,3 +8,6 @@ fi
 echo "Running database evolution"
 python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py syncdb --noinput
 python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py evolve --hint --exec
+
+echo "Collecting all static assets"
+python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py collectstatic --noinput
