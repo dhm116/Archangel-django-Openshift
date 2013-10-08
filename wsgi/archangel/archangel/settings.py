@@ -2,9 +2,6 @@ import os
 
 # Django settings for archangel project.
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
     ('Doug McCall', 'dhm116@psu.edu'),
@@ -12,11 +9,16 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+DEBUG = True
+
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
+    DEBUG = False
 
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
+
+TEMPLATE_DEBUG = DEBUG
 
 if ON_OPENSHIFT:
     DATABASES = {
@@ -99,7 +101,10 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'static')
+if ON_OPENSHIFT:
+    STATIC_ROOT = os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'static')
+else:
+    STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
