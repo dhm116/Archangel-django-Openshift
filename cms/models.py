@@ -54,8 +54,8 @@ class CourseSection(models.Model):
 class CourseRoster(models.Model):
 	user = models.ForeignKey(CmsUser, related_name='courses')
 	section = models.ForeignKey(CourseSection, related_name='members')
-	role = models.ForeignKey(Role)
-	#group = models.ForeignKey(Group)
+	# role = models.ForeignKey(Role)
+	group = models.ForeignKey(Group)
 
 	class Meta:
 		unique_together = (('user', 'section'),)
