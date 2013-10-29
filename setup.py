@@ -17,6 +17,7 @@ setup(
     	'djangorestframework',
     	'markdown',
     	'django-filter',
-    	'pil'
+    	'pil',
+        'django_extensions'
     ],
 )
