@@ -42,6 +42,14 @@ else:
             'PASSWORD': '',                  # Not used with sqlite3.
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
             'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        },
+        'db_multi': {
+            'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': os.path.join(PROJECT_DIR, 'sqlite3.multi_db.db'),  # Or path to database file if using sqlite3.
+            'USER': '',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
         }
     }
 
@@ -55,7 +63,15 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -63,7 +79,7 @@ REST_FRAMEWORK = {
 ALLOWED_HOSTS = []
 
 XS_SHARING_ALLOWED_ORIGINS = '*'
-XS_SHARING_ALLOWED_HEADERS = ['X-Requested-With']
+XS_SHARING_ALLOWED_HEADERS = ['X-Requested-With', 'Content-Type']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -173,6 +189,8 @@ INSTALLED_APPS = (
     'django_evolution',
     'model_utils',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django_extensions',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
