@@ -66,7 +66,7 @@ class CourseRoster(models.Model):
 	course = property(_get_course)
 
 	def __unicode__(self):
-		return u'%s -> %s -> %s'%(self.user, self.section, self.role)
+		return u'%s -> %s -> %s'%(self.user, self.section, self.group)
 
 class Team(models.Model):
 	user = models.ForeignKey(CmsUser)
