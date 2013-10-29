@@ -60,5 +60,5 @@ class DocumentViewSet(viewsets.ModelViewSet):
 class StudentsList(viewsets.ModelViewSet):
 		# model = CmsUser
 		serializer_class = CmsUserSerializer
-		student_group = Group.objects.get(name='student')
+		student_group = Group.objects.get_or_create(name='student')
 		queryset = CmsUser.objects.filter(courses__group_id=student_group.id)
