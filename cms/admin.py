@@ -98,12 +98,12 @@ class AssignmentAdmin(admin.ModelAdmin):
 	list_display = ('lesson', 'name', 'points', 'due_date')
 	list_editable = ('points', 'due_date')
 	list_filter = ('lesson__course__name', 'author')
-	
+
 class SubmissionAdmin(admin.ModelAdmin):
 	model = models.AssignmentSubmission
-	list_display = ('assignment', 'user', 'team', 'submitted_date', 'score')
-	list_editable = ('score')
-	list_filter = ('assignment', 'user', 'submitted_date')
+	list_display = ('assignment', 'author', 'team', 'submitted_date', 'score')
+	list_editable = ('score',)
+	list_filter = ('assignment', 'author', 'submitted_date')
 
 admin.site.register(models.CmsUser, CmsUserAdmin)
 admin.site.register(models.Course, CourseAdmin)
