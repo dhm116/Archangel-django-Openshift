@@ -14,7 +14,7 @@ DEBUG = True
 ON_OPENSHIFT = False
 if os.environ.has_key('OPENSHIFT_REPO_DIR'):
     ON_OPENSHIFT = True
-    DEBUG = False
+    #DEBUG = False
 
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
 
