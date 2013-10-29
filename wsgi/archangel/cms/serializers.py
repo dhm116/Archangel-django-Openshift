@@ -6,7 +6,12 @@ from django.db.models.fields import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = User
-		fields = ('url', 'id', 'username', 'email', 'groups')
+		fields = ('url', 'id', 'username', 'email', 'groups',)
+
+class CmsUserSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = CmsUser
+		fields = ('url', 'id', 'username', 'email', 'title', 'groups', 'courses')
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
@@ -19,23 +24,29 @@ class CourseSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = Course
-		fields = ('url', 'id', 'name', 'instructor', 'students', 'syllabus', 'lessons')
-		depth = 1
+		fields = ('url', 'id', 'name', 'full_name', 'description', 'schedule_no', 'start_date', 'end_date' , 'sections', 'syllabus', 'lessons')
+		# depth = 1
 
-class InstructorSerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
-		model = Instructor
-		fields = ('url', 'id', 'username', 'email', 'groups', 'courses')
+class CourseSectionSerializer(serializers.HyperlinkedModelSerializer):
+	# documents = DocumentObjectRelatedField(many=True)#, context={'request':request})
+	# syllabus = SyllabusSerializer()
 
-class StudentSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
-		model = Student
-		fields = ('url', 'id', 'username', 'email', 'groups', 'courses')
+		model = CourseSection
+		fields = ('url', 'id', 'section_no', 'course', 'members')
+
+class CourseRosterSerializer(serializers.HyperlinkedModelSerializer):
+	# documents = DocumentObjectRelatedField(many=True)#, context={'request':request})
+	# syllabus = SyllabusSerializer()
+
+	class Meta:
+		model = CourseRoster
+		fields = ('url', 'id', 'user', 'section', 'group')
 
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Document
-		fields = ('url', 'title',)
+		fields = ('url','author', 'name', 'description', 'content', 'file_path', 'creation_date')
 
 class SyllabusSerializer(serializers.HyperlinkedModelSerializer):
 	#author = serializers.HyperlinkedRelatedField(view_name='instructor-detail')
@@ -43,8 +54,8 @@ class SyllabusSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = Syllabus
-		fields = ('url', 'id', 'title', 'course', 'author', 'createdOn')
-		depth = 1
+		fields = ('url','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'course')
+		# depth = 1
 
 class LessonSerializer(serializers.HyperlinkedModelSerializer):
 	#author = UserSerializer() #serializers.HyperlinkedRelatedField(view_name='instructor-detail')
@@ -53,16 +64,16 @@ class LessonSerializer(serializers.HyperlinkedModelSerializer):
 
 	class Meta:
 		model = Lesson
-		fields = ('url', 'id', 'title', 'week', 'course', 'author', 'createdOn', 'assignments')
-		depth = 1
+		fields = ('url','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'course', 'week_no')
+		# depth = 1
 
 class AssignmentSerializer(serializers.HyperlinkedModelSerializer):
-	author = serializers.HyperlinkedRelatedField(view_name='instructor-detail')
-	lesson = serializers.HyperlinkedRelatedField(view_name='lesson-detail')
+	# author = serializers.HyperlinkedRelatedField(view_name='instructor-detail')
+	# lesson = serializers.HyperlinkedRelatedField(view_name='lesson-detail')
 
 	class Meta:
 		model = Assignment
-		fields = ('url', 'id', 'title', 'dueOn', 'points', 'lesson', 'author')
+		fields = ('url','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'due_date', 'points', 'lesson')
 
 class DocumentObjectRelatedField(serializers.RelatedField):
 	def to_native(self, value):
