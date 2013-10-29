@@ -18,6 +18,6 @@ setup(
     	'markdown',
     	'django-filter',
     	'pil',
-        'django_extensions'
+        'django-extensions'
     ],
 )
