@@ -1,9 +1,23 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User, Group, Permission
 from models import *
 from rest_framework import viewsets, generics
 from serializers import *
-
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework import status, parsers, renderers
+from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
+from django.forms.models import model_to_dict
 # Create your views here.
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request):
+        serializer = self.serializer_class(data=request.DATA)
+        if serializer.is_valid():
+            token, created = Token.objects.get_or_create(user=serializer.object['user'])
+            user = model_to_dict(token.user)
+            del user['password']
+            return Response({'token': token.key, 'user':user})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserViewSet(viewsets.ModelViewSet):
 		"""
@@ -28,6 +42,14 @@ class GroupViewSet(viewsets.ModelViewSet):
 		model = Group
 		# queryset = Group.objects.all()
 		serializer_class = GroupSerializer
+
+class PermissionViewSet(viewsets.ModelViewSet):
+		"""
+		API endpoint that allows permissions to be viewed or edited.
+		"""
+		model = Permission
+		# queryset = Permission.objects.all()
+		serializer_class = PermissionSerializer
 
 class CourseViewSet(viewsets.ModelViewSet):
 		model = Course
@@ -62,3 +84,5 @@ class StudentsList(viewsets.ModelViewSet):
 		serializer_class = CmsUserSerializer
 		student_group, created = Group.objects.get_or_create(name='student')
 		queryset = CmsUser.objects.filter(courses__group_id=student_group.id)
+
+custom_obtain_auth_token = CustomObtainAuthToken.as_view()

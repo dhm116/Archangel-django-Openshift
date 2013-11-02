@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User, Group, Permission
 from models import *
 from rest_framework import serializers
 from django.db.models.fields import *
@@ -13,10 +13,16 @@ class CmsUserSerializer(serializers.HyperlinkedModelSerializer):
 		model = CmsUser
 		fields = ('url', 'id', 'username', 'email', 'title', 'groups', 'courses')
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class GroupSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Group
-		fields = ('url', 'name')
+		fields = ('id', 'name', 'permissions')
+		depth = 1
+
+class PermissionSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Permission
+		fields = ('id', 'name',)
 
 class CourseSerializer(serializers.HyperlinkedModelSerializer):
 	# documents = DocumentObjectRelatedField(many=True)#, context={'request':request})
