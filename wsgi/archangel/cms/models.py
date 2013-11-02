@@ -118,6 +118,7 @@ class Lesson(Document):
 class Assignment(Document):
 	due_date = models.DateTimeField()
 	points = models.DecimalField(max_digits=5, decimal_places=0)
+	weight = models.DecimalField(max_digits=4, decimal_places=3)
 	lesson = models.ForeignKey(Lesson, related_name='assignments')
 
 	class Meta:

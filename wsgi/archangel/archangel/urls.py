@@ -5,12 +5,12 @@ from cms.views import *
 from django.contrib import admin
 admin.autodiscover()
 
-
 # Routers provide an easy way of automatically determining the URL conf
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'cmsusers', CmsUserViewSet)
 router.register(r'groups', GroupViewSet)
+router.register(r'permissions', PermissionViewSet)
 router.register(r'courses', CourseViewSet)
 router.register(r'coursesections', CourseSectionViewSet)
 router.register(r'courserosters', CourseRosterViewSet)
@@ -33,5 +33,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api-token-auth/', 'rest_framework.authtoken.views.obtain_auth_token'),
+    url(r'^api-token-auth/', 'cms.views.custom_obtain_auth_token'),
 )
