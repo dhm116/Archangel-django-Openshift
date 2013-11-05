@@ -79,7 +79,7 @@ REST_FRAMEWORK = {
 ALLOWED_HOSTS = []
 
 XS_SHARING_ALLOWED_ORIGINS = '*'
-XS_SHARING_ALLOWED_HEADERS = ['X-Requested-With', 'Content-Type']
+XS_SHARING_ALLOWED_HEADERS = ['X-Requested-With', 'Content-Type', 'Authorization']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
