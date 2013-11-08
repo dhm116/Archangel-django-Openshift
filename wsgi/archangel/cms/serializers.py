@@ -6,12 +6,7 @@ from django.db.models.fields import *
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('id', 'username', 'first_name', 'last_name', 'is_active', 'last_login', 'email')
-
-class CmsUserSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = CmsUser
-		fields = ('id', 'username', 'first_name', 'last_name', 'is_active', 'last_login', 'email', 'title', 'courses')
+		fields = ('id', 'username', 'first_name', 'last_name', 'is_active', 'last_login', 'email', 'courses', 'profile')
 
 class GroupSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -44,10 +39,18 @@ class CourseSectionSerializer(serializers.ModelSerializer):
 class CourseRosterSerializer(serializers.ModelSerializer):
 	# documents = DocumentObjectRelatedField(many=True)#, context={'request':request})
 	# syllabus = SyllabusSerializer()
+	course = serializers.Field('course.id')
 
 	class Meta:
 		model = CourseRoster
-		fields = ('id', 'user', 'section', 'group')
+		fields = ('id', 'user', 'section', 'group', 'course')
+
+class TeamSerializer(serializers.ModelSerializer):
+	course = serializers.Field('course.id')
+
+	class Meta:
+		model = Team
+		fields = ('id', 'user', 'section', 'team_no', 'course')
 
 class DocumentSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -79,7 +82,7 @@ class AssignmentSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Assignment
-		fields = ('id','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'due_date', 'points', 'lesson')
+		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'due_date', 'points', 'lesson')
 
 class DocumentObjectRelatedField(serializers.RelatedField):
 	def to_native(self, value):
