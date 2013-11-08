@@ -6,23 +6,18 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 
+# Create your models here.
 @receiver(post_save, sender=User)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
 	if created:
 		Token.objects.get_or_create(user=instance)
-
-# Create your models here.
-class CmsUser(User):
-	title = models.CharField(max_length=200, blank=True)
-	objects = InheritanceManager()
-
-	def __unicode__(self):
-		return (u'%s %s - %s'%(self.first_name, self.last_name, self.email)).title()
+		UserProfile.objects.get_or_create(user=instance)
 
 class UserProfile(models.Model):
 	bio = models.TextField(blank=True)
 	picture = models.URLField(blank=True)
-	user = models.OneToOneField(CmsUser, null=False)
+	title = models.CharField(max_length=200, blank=True)
+	user = models.OneToOneField(User, related_name='profile')
 
 class Role(Group):
 	pass
@@ -52,7 +47,7 @@ class CourseSection(models.Model):
 		ordering = ['section_no']
 
 class CourseRoster(models.Model):
-	user = models.ForeignKey(CmsUser, related_name='courses')
+	user = models.ForeignKey(User, related_name='courses')
 	section = models.ForeignKey(CourseSection, related_name='members')
 	# role = models.ForeignKey(Role)
 	group = models.ForeignKey(Group)
@@ -69,7 +64,7 @@ class CourseRoster(models.Model):
 		return u'%s -> %s -> %s'%(self.user, self.section, self.group)
 
 class Team(models.Model):
-	user = models.ForeignKey(CmsUser)
+	user = models.ForeignKey(User)
 	section = models.ForeignKey(CourseSection, related_name='teams')
 	team_no = models.PositiveIntegerField()
 
@@ -83,7 +78,7 @@ class Team(models.Model):
 		ordering = ['team_no']
 
 class Document(models.Model):
-	author = models.ForeignKey(CmsUser)
+	author = models.ForeignKey(User)
 	name = models.CharField(max_length=400)
 	description = models.TextField(blank=True, null=True)
 	content = models.TextField(blank=True, null=True)

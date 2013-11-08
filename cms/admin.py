@@ -1,12 +1,12 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User, Group
 import models
 
-class ProfileInline(admin.TabularInline):
+class ProfileInline(admin.StackedInline):
 	model = models.UserProfile
-
-class CmsUser(admin.TabularInline):
-	model = models.CmsUser
+	can_delete = False
+	verbose_name_plural = 'profile'
 
 class GroupInline(admin.TabularInline):
 	model = Group
@@ -46,8 +46,8 @@ class SyllabusInline(admin.TabularInline):
 	model = models.Syllabus
 	max_num = 1
 
-class CmsUserAdmin(admin.ModelAdmin):
-	model = models.CmsUser
+class UserAdmin(UserAdmin):
+	inlines = (ProfileInline, )
 
 class CourseAdmin(admin.ModelAdmin):
 	model = models.Course
@@ -105,7 +105,8 @@ class SubmissionAdmin(admin.ModelAdmin):
 	list_editable = ('score',)
 	list_filter = ('assignment', 'author', 'submitted_date')
 
-admin.site.register(models.CmsUser, CmsUserAdmin)
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 admin.site.register(models.Course, CourseAdmin)
 admin.site.register(models.CourseSection, CourseSectionAdmin)
 admin.site.register(models.CourseRoster, CourseRosterAdmin)
