@@ -67,7 +67,9 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 		def get_queryset(self):
 				# Restrict courses to those that you belong to
-				return list(set(Course.objects.filter(sections__members__user__id=self.request.user.id)))
+				q = list(set(Course.objects.filter(sections__members__user__id=self.request.user.id).values_list('id', flat=True)))
+				q = Course.objects.filter(id__in=q)
+				return q
 
 class CourseSectionViewSet(viewsets.ModelViewSet):
 		model = CourseSection
@@ -75,7 +77,9 @@ class CourseSectionViewSet(viewsets.ModelViewSet):
 
 		def get_queryset(self):
 				# Restrict course sections to those that you belong to
-				return list(set(CourseSection.objects.filter(members__user__id=self.request.user.id)))
+				q = list(set(CourseSection.objects.filter(members__user__id=self.request.user.id).values_list('id', flat=True)))
+				q = CourseSection.objects.filter(id__in=q)
+				return q
 
 class CourseRosterViewSet(viewsets.ModelViewSet):
 		model = CourseRoster
@@ -83,42 +87,54 @@ class CourseRosterViewSet(viewsets.ModelViewSet):
 
 		def get_queryset(self):
 				# Restrict course roster to those in your same section
-				return list(set(CourseRoster.objects.filter(section__members__user__id=self.request.user.id)))
+				q = list(set(CourseRoster.objects.filter(section__members__user__id=self.request.user.id).values_list('id', flat=True)))
+				q = CourseRoster.objects.filter(id__in=q)
+				return q
 
 class TeamViewSet(viewsets.ModelViewSet):
 		model = Team
 		serializer_class = TeamSerializer
 
 		def get_queryset(self):
-				return list(set(Team.objects.filter(section__members__user__id=self.request.user.id)))
+				q = list(set(Team.objects.filter(section__members__user__id=self.request.user.id).values_list('id', flat=True)))
+				q = Team.objects.filter(id__in=q)
+				return q
 
 class SyllabusViewSet(viewsets.ModelViewSet):
 		model = Syllabus
 		serializer_class = SyllabusSerializer
 
 		def get_queryset(self):
-				return list(set(Syllabus.objects.filter(course__sections__members__user__id=self.request.user.id)))
+				q = list(set(Syllabus.objects.filter(course__sections__members__user__id=self.request.user.id).values_list('id', flat=True)))
+				q = Syllabus.objects.filter(id__in=q)
+				return q
 
 class LessonViewSet(viewsets.ModelViewSet):
 		model = Lesson
 		serializer_class = LessonSerializer
 
 		def get_queryset(self):
-				return list(set(Lesson.objects.filter(course__sections__members__user__id=self.request.user.id)))
+				q = list(set(Lesson.objects.filter(course__sections__members__user__id=self.request.user.id).values_list('id', flat=True)))
+				q = Lesson.objects.filter(id__in=q)
+				return q
 
 class AssignmentViewSet(viewsets.ModelViewSet):
 		model = Assignment
 		serializer_class = AssignmentSerializer
 
 		def get_queryset(self):
-				return list(set(Assignment.objects.filter(Q(lesson__course__sections__members__user__id=self.request.user.id) | Q(author__id=self.request.user.id))))
+				q = list(set(Assignment.objects.filter(lesson__course__sections__members__user__id=self.request.user.id).values_list('id', flat=True)))
+				q = Assignment.objects.filter(id__in=q)
+				return q
 
 class AssignmentSubmissionViewSet(viewsets.ModelViewSet):
 		model = AssignmentSubmission
 		serializer_class = AssignmentSubmissionSerializer
 
 		def get_queryset(self):
-				return list(set(AssignmentSubmission.objects.filter(Q(assignment__author__id=self.request.user.id) | Q(author__id=self.request.user.id))))
+				q = list(set(AssignmentSubmission.objects.filter(Q(assignment__author__id=self.request.user.id) | Q(author__id=self.request.user.id)).values_list('id', flat=True)))
+				q = AssignmentSubmission.objects.filter(id__in=q)
+				return q
 
 class DocumentViewSet(viewsets.ModelViewSet):
 		model = Document
