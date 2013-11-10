@@ -40,6 +40,7 @@ class CourseRosterSerializer(serializers.ModelSerializer):
 	# documents = DocumentObjectRelatedField(many=True)#, context={'request':request})
 	# syllabus = SyllabusSerializer()
 	course = serializers.Field('course.id')
+	group = serializers.RelatedField()
 
 	class Meta:
 		model = CourseRoster
@@ -58,8 +59,6 @@ class DocumentSerializer(serializers.ModelSerializer):
 		fields = ('id', 'author', 'name', 'description', 'content', 'file_path', 'creation_date')
 
 class SyllabusSerializer(serializers.ModelSerializer):
-	#author = serializers.RelatedField(view_name='instructor-detail')
-	#course = serializers.RelatedField(view_name='course-detail')
 
 	class Meta:
 		model = Syllabus
@@ -67,22 +66,23 @@ class SyllabusSerializer(serializers.ModelSerializer):
 		# depth = 1
 
 class LessonSerializer(serializers.ModelSerializer):
-	#author = UserSerializer() #serializers.RelatedField(view_name='instructor-detail')
-	#course = serializers.RelatedField() #serializers.RelatedField(view_name='course-detail')
-	#assignments = serializers.RelatedField(view_name='assignment-detail', many=True)
 
 	class Meta:
 		model = Lesson
-		fields = ('id','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'course', 'week_no')
+		fields = ('id','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'course', 'week_no', 'assignments')
 		# depth = 1
 
 class AssignmentSerializer(serializers.ModelSerializer):
-	# author = serializers.RelatedField(view_name='instructor-detail')
-	# lesson = serializers.RelatedField(view_name='lesson-detail')
 
 	class Meta:
 		model = Assignment
-		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'due_date', 'points', 'lesson')
+		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'file_path', 'due_date', 'points', 'lesson')
+
+class AssignmentSubmissionSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = AssignmentSubmission
+		fields = ('id','author', 'team', 'name', 'description', 'content', 'file_path', 'creation_date', 'submitted_date', 'score', 'assignment')
 
 class DocumentObjectRelatedField(serializers.RelatedField):
 	def to_native(self, value):
