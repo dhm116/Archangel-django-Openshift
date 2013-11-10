@@ -1,0 +1,243 @@
+[
+  {
+    "pk": 1,
+    "model": "cms.course",
+    "fields": {
+      "name": "CMS 101",
+      "end_date": "2013-12-13",
+      "schedule_no": "1023982",
+      "full_name": "Intro to Course Management Systems",
+      "active": false,
+      "start_date": "2013-11-08",
+      "description": "No clue how to build a CMS? Don't ask us..."
+    }
+  },
+  {
+    "pk": 1,
+    "model": "cms.coursesection",
+    "fields": {
+      "course": 1,
+      "section_no": "001"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "cms.coursesection",
+    "fields": {
+      "course": 1,
+      "section_no": "002"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "auth.group",
+    "fields": {
+      "name": "student",
+      "permissions": []
+    }
+  },
+  {
+    "pk": 2,
+    "model": "auth.group",
+    "fields": {
+      "name": "instructor",
+      "permissions": []
+    }
+  },
+  {
+    "pk": 1,
+    "model": "auth.user",
+    "fields": {
+      "username": "admin",
+      "first_name": "Admin",
+      "last_name": "Account",
+      "is_active": true,
+      "is_superuser": true,
+      "is_staff": true,
+      "last_login": "2013-10-30T00:44:07.046Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$10000$COhzyrhth2dc$yWg3yJCJuG6TamFS++tY7aE8yubH66HPlDaoALtDUV8=",
+      "email": "admin@admin.com",
+      "date_joined": "2013-10-29T23:09:39.514Z"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "auth.user",
+    "fields": {
+      "username": "snc137",
+      "first_name": "Stacey",
+      "last_name": "Crotti",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2013-10-29T23:48:02Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "9D84BcK8ZsERTeP",
+      "email": "snc137@psu.edu",
+      "date_joined": "2013-10-29T23:48:03Z"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "auth.user",
+    "fields": {
+      "username": "dhm116",
+      "first_name": "Doug",
+      "last_name": "McCall",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2013-10-29T23:50:54Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$10000$COhzyrhth2dc$yWg3yJCJuG6TamFS++tY7aE8yubH66HPlDaoALtDUV8=",
+      "email": "dhm116@psu.edu",
+      "date_joined": "2013-10-29T23:50:54Z"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "auth.user",
+    "fields": {
+      "username": "cxw970",
+      "first_name": "Christopher",
+      "last_name": "Wolf",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2013-10-29T23:51:32Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "u35X9URnPZGX4vC",
+      "email": "cxw970@psu.edu",
+      "date_joined": "2013-10-29T23:51:32Z"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "auth.user",
+    "fields": {
+      "username": "aua230",
+      "first_name": "Adbulatif",
+      "last_name": "Alsaidi",
+      "is_active": true,
+      "is_superuser": false,
+      "is_staff": false,
+      "last_login": "2013-10-29T23:52:32Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "P73TJLrWLZdeaKw",
+      "email": "aua230@psu.edu",
+      "date_joined": "2013-10-29T23:52:33Z"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "cms.courseroster",
+    "fields": {
+      "section": 1,
+      "group": 2,
+      "user": 3
+    }
+  },
+  {
+    "pk": 2,
+    "model": "cms.courseroster",
+    "fields": {
+      "section": 2,
+      "group": 2,
+      "user": 3
+    }
+  },
+  {
+    "pk": 3,
+    "model": "cms.courseroster",
+    "fields": {
+      "section": 1,
+      "group": 1,
+      "user": 2
+    }
+  },
+  {
+    "pk": 4,
+    "model": "cms.courseroster",
+    "fields": {
+      "section": 2,
+      "group": 1,
+      "user": 4
+    }
+  },
+  {
+    "pk": 5,
+    "model": "cms.courseroster",
+    "fields": {
+      "section": 1,
+      "group": 1,
+      "user": 5
+    }
+  },
+  {
+    "pk": 1,
+    "model": "cms.document",
+    "fields": {
+      "description": "This course's schedule",
+      "author": 3,
+      "creation_date": "2013-11-08T20:39:35.811Z",
+      "content": "# Welcome to CMS 101",
+      "file_path": "",
+      "name": "Welcome to CMS 101"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "cms.document",
+    "fields": {
+      "description": "Spelling your name",
+      "author": 3,
+      "creation_date": "2013-11-08T20:42:54.996Z",
+      "content": "# Sometimes it's hard to spell your name\r\nLesson description",
+      "file_path": "",
+      "name": "Who are you?"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "cms.document",
+    "fields": {
+      "description": "",
+      "author": 3,
+      "creation_date": "2013-11-08T20:42:55.092Z",
+      "content": "",
+      "file_path": "",
+      "name": "Spell your name"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "cms.syllabus",
+    "fields": {
+      "course": 1
+    }
+  },
+  {
+    "pk": 2,
+    "model": "cms.lesson",
+    "fields": {
+      "course": 1,
+      "week_no": 1
+    }
+  },
+  {
+    "pk": 3,
+    "model": "cms.assignment",
+    "fields": {
+      "due_date": "2013-11-11T06:00:00Z",
+      "lesson": 2,
+      "points": "100",
+      "weight": "1.000"
+    }
+  }
+]
