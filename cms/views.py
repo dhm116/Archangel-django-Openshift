@@ -136,6 +136,15 @@ class AssignmentSubmissionViewSet(viewsets.ModelViewSet):
 				q = AssignmentSubmission.objects.filter(id__in=q)
 				return q
 
+class GradedAssignmentSubmissionViewSet(viewsets.ModelViewSet):
+		model = GradedAssignmentSubmission
+		serializer_class = GradedAssignmentSubmissionSerializer
+
+		def get_queryset(self):
+				q = list(set(GradedAssignmentSubmission.objects.filter(Q(submission__assignment__author__id=self.request.user.id) | Q(author__id=self.request.user.id) | Q(submission__author__id=self.request.user.id)).values_list('id', flat=True)))
+				q = GradedAssignmentSubmission.objects.filter(id__in=q)
+				return q
+
 class DocumentViewSet(viewsets.ModelViewSet):
 		model = Document
 		serializer_class = DocumentSerializer
