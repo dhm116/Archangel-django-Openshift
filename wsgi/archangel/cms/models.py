@@ -67,6 +67,9 @@ class Team(models.Model):
 	user = models.ForeignKey(User)
 	section = models.ForeignKey(CourseSection, related_name='teams')
 	team_no = models.PositiveIntegerField()
+	name = models.CharField(max_length=200, null=True, blank=True)
+	start_date = models.DateField(null=True, blank=True)
+	end_date = models.DateField(null=True, blank=True)
 
 	def _get_course(self):
 		return self.section.course
@@ -126,10 +129,24 @@ class Assignment(Document):
 
 class AssignmentSubmission(Document):
 	assignment = models.ForeignKey(Assignment, related_name='submissions')
-	team = models.ForeignKey(Team, related_name='submissions', null=True)
+	team = models.ForeignKey(Team, related_name='submissions', blank=True, null=True)
 	submitted_date = models.DateTimeField(auto_now_add=True)
-	score = models.DecimalField(max_digits=5, decimal_places=2)
+	# score = models.DecimalField(max_digits=5, decimal_places=2)
 
 	class Meta:
 		# order_with_respect_to = 'assignment'
 		ordering = ['-submitted_date']
+
+class GradedAssignmentSubmission(Document):
+	# assignment = models.ForeignKey(Assignment, related_name='grades')
+	submission = models.OneToOneField(AssignmentSubmission, null=False, related_name='grade')
+	score = models.DecimalField(max_digits=5, decimal_places=2)
+
+	def _get_assignment(self):
+		return self.submission.assignment
+
+	assignment = property(_get_assignment)
+
+	class Meta:
+		verbose_name = 'Graded Assignment'
+		verbose_name_plural = 'Graded Assignments'

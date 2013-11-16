@@ -34,7 +34,7 @@ class CourseSectionSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = CourseSection
-		fields = ('id', 'section_no', 'course', 'members')
+		fields = ('id', 'section_no', 'course', 'members', 'teams')
 
 class CourseRosterSerializer(serializers.ModelSerializer):
 	# documents = DocumentObjectRelatedField(many=True)#, context={'request':request})
@@ -82,7 +82,14 @@ class AssignmentSubmissionSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = AssignmentSubmission
-		fields = ('id','author', 'team', 'name', 'description', 'content', 'file_path', 'creation_date', 'submitted_date', 'score', 'assignment')
+		fields = ('id','author', 'team', 'name', 'description', 'content', 'file_path', 'creation_date', 'submitted_date', 'assignment')
+
+class GradedAssignmentSubmissionSerializer(serializers.ModelSerializer):
+	assignment = serializers.Field('assignment.id')
+
+	class Meta:
+		model = GradedAssignmentSubmission
+		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'file_path', 'submission', 'score', 'assignment')
 
 class DocumentObjectRelatedField(serializers.RelatedField):
 	def to_native(self, value):

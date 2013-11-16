@@ -24,7 +24,7 @@ Access-Control-Allow-Methods, and Access-Control-Allow-Headers items.
 
 XS_SHARING_ALLOWED_ORIGINS = getattr(settings, "XS_SHARING_ALLOWED_ORIGINS", '')
 XS_SHARING_ALLOWED_METHODS = getattr(settings, "XS_SHARING_ALLOWED_METHODS",
-    ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE'])
+    ['POST', 'GET', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'])
 XS_SHARING_ALLOWED_HEADERS = getattr(settings, "XS_SHARING_ALLOWED_HEADERS", [])
 
 
