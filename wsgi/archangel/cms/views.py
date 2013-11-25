@@ -100,6 +100,15 @@ class TeamViewSet(viewsets.ModelViewSet):
 				q = Team.objects.filter(id__in=q)
 				return q
 
+class TeamMemberViewSet(viewsets.ModelViewSet):
+		model = TeamMember
+		serializer_class = TeamMemberSerializer
+
+		def get_queryset(self):
+				q = list(set(TeamMember.objects.filter(user__id=self.request.user.id).values_list('id', flat=True)))
+				q = TeamMember.objects.filter(id__in=q)
+				return q
+
 class SyllabusViewSet(viewsets.ModelViewSet):
 		model = Syllabus
 		serializer_class = SyllabusSerializer
@@ -143,6 +152,30 @@ class GradedAssignmentSubmissionViewSet(viewsets.ModelViewSet):
 		def get_queryset(self):
 				q = list(set(GradedAssignmentSubmission.objects.filter(Q(submission__assignment__author__id=self.request.user.id) | Q(author__id=self.request.user.id) | Q(submission__author__id=self.request.user.id)).values_list('id', flat=True)))
 				q = GradedAssignmentSubmission.objects.filter(id__in=q)
+				return q
+
+class ForumViewSet(viewsets.ModelViewSet):
+		model = Forum
+		serializer_class = ForumSerializer
+
+		def get_queryset(self):
+				q = list(set(Forum.objects.filter(
+					Q(course__sections__members__user__id=self.request.user.id)
+					| Q(lesson__course__sections__members__user__id=self.request.user.id)
+				).values_list('id', flat=True)))
+				q = Forum.objects.filter(id__in=q)
+				return q
+
+class ForumPostViewSet(viewsets.ModelViewSet):
+		model = ForumPost
+		serializer_class = ForumPostSerializer
+
+		def get_queryset(self):
+				q = list(set(ForumPost.objects.filter(
+					Q(author__id=self.request.user.id)
+					| Q(response_to__author__id=self.request.user.id)
+				).values_list('id', flat=True)))
+				q = Message.objects.filter(id__in=q)
 				return q
 
 class DocumentViewSet(viewsets.ModelViewSet):

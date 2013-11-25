@@ -25,7 +25,7 @@ class CourseSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Course
-		fields = ('id', 'name', 'full_name', 'description', 'schedule_no', 'start_date', 'end_date' , 'sections', 'syllabus', 'lessons')
+		fields = ('id', 'name', 'full_name', 'description', 'schedule_no', 'start_date', 'end_date' , 'sections', 'syllabus', 'lessons', 'forums')
 		# depth = 1
 
 class CourseSectionSerializer(serializers.ModelSerializer):
@@ -51,7 +51,12 @@ class TeamSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Team
-		fields = ('id', 'user', 'section', 'team_no', 'course')
+		fields = ('id', 'members', 'section', 'team_no', 'course')
+
+class TeamMemberSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = TeamMember
+		fields = ('id', 'team', 'user')
 
 class DocumentSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -69,20 +74,20 @@ class LessonSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Lesson
-		fields = ('id','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'course', 'week_no', 'assignments')
+		fields = ('id','author', 'name', 'description', 'content', 'file_path', 'creation_date', 'course', 'week_no', 'assignments', 'forums')
 		# depth = 1
 
 class AssignmentSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Assignment
-		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'file_path', 'due_date', 'points', 'lesson')
+		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'file_path', 'due_date', 'points', 'lesson','submissions')
 
 class AssignmentSubmissionSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = AssignmentSubmission
-		fields = ('id','author', 'team', 'name', 'description', 'content', 'file_path', 'creation_date', 'submitted_date', 'assignment')
+		fields = ('id','author', 'team', 'name', 'description', 'content', 'file_path', 'creation_date', 'submitted_date', 'assignment', 'grade')
 
 class GradedAssignmentSubmissionSerializer(serializers.ModelSerializer):
 	assignment = serializers.Field('assignment.id')
@@ -90,6 +95,22 @@ class GradedAssignmentSubmissionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = GradedAssignmentSubmission
 		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'file_path', 'submission', 'score', 'assignment')
+
+class ForumSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Forum
+		fields = ('id', 'course', 'lesson', 'name', 'description')
+
+class ForumPostSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = ForumPost
+		fields = ('id', 'author', 'response_to', 'name', 'description', 'content', 'creation_date', 'replies')
+		# depth = 1
+
+class ForumPostAttachmentSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = ForumPostAttachment
+		fields = ('id', 'author', 'post', 'name', 'description', 'content', 'creation_date')
 
 class DocumentObjectRelatedField(serializers.RelatedField):
 	def to_native(self, value):

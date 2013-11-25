@@ -46,6 +46,10 @@ class SyllabusInline(admin.TabularInline):
 	model = models.Syllabus
 	max_num = 1
 
+class TeamMemberInline(admin.TabularInline):
+	model = models.TeamMember
+	extra = 1
+
 class UserAdmin(UserAdmin):
 	inlines = (ProfileInline, )
 
@@ -78,6 +82,12 @@ class CourseRosterAdmin(admin.ModelAdmin):
 
 class TeamAdmin(admin.ModelAdmin):
 	model = models.Team
+	list_display = ('section', 'team_no', 'name', 'start_date', 'end_date')
+	list_filter = ('section', 'section__course__name')
+
+	inlines = [
+		TeamMemberInline,
+	]
 
 class SyllabusAdmin(admin.ModelAdmin):
 	model = models.Syllabus

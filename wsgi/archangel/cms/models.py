@@ -64,7 +64,6 @@ class CourseRoster(models.Model):
 		return u'%s -> %s -> %s'%(self.user, self.section, self.group)
 
 class Team(models.Model):
-	user = models.ForeignKey(User)
 	section = models.ForeignKey(CourseSection, related_name='teams')
 	team_no = models.PositiveIntegerField()
 	name = models.CharField(max_length=200, null=True, blank=True)
@@ -77,8 +76,16 @@ class Team(models.Model):
 	course = property(_get_course)
 
 	class Meta:
-		unique_together = (('user', 'section', 'team_no'),)
+		unique_together = (('section', 'team_no'),)
 		ordering = ['team_no']
+
+class TeamMember(models.Model):
+	user = models.ForeignKey(User, related_name='teams')
+	team = models.ForeignKey(Team, related_name='members')
+
+	class Meta:
+		unique_together = (('user', 'team'),)
+		ordering = ['team']
 
 class Document(models.Model):
 	author = models.ForeignKey(User)
@@ -137,6 +144,11 @@ class AssignmentSubmission(Document):
 		# order_with_respect_to = 'assignment'
 		ordering = ['-submitted_date']
 
+	def _get_lesson(self):
+		return self.assignment.lesson
+
+	lesson = property(_get_lesson)
+
 class GradedAssignmentSubmission(Document):
 	# assignment = models.ForeignKey(Assignment, related_name='grades')
 	submission = models.OneToOneField(AssignmentSubmission, null=False, related_name='grade')
@@ -147,6 +159,25 @@ class GradedAssignmentSubmission(Document):
 
 	assignment = property(_get_assignment)
 
+	def _get_submission_author(self):
+		return self.submission.author
+
+	submission_author = property(_get_submission_author)
+
 	class Meta:
 		verbose_name = 'Graded Assignment'
 		verbose_name_plural = 'Graded Assignments'
+
+class Forum(models.Model):
+	name = models.CharField(max_length=400)
+	description = models.TextField(blank=True, null=True)
+	course = models.ForeignKey(Course, related_name='forums', blank=True, null=True)
+	lesson = models.ForeignKey(Lesson, related_name='forums', blank=True, null=True)
+
+class ForumPost(Document):
+	response_to = models.ForeignKey('self', related_name='replies', null=True, blank=True)
+	forum = models.ForeignKey(Forum, related_name='posts')
+
+class ForumPostAttachment(Document):
+	post = models.ForeignKey('ForumPost', related_name='attachments')
+
