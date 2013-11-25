@@ -12,8 +12,10 @@ setup(
     install_requires=[
     	'Django>=1.3',
     	'psycopg2',
+        'django_autofixture',
     	'django_evolution',
     	'django-model-utils',
+        'django-rest-swagger',
     	'djangorestframework',
     	'markdown',
     	'django-filter',
