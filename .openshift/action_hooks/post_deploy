@@ -5,9 +5,11 @@ if [ ! -L $rest_framework_static_dir ]; then
 	ln -s $OPENSHIFT_PYTHON_DIR/virtenv/lib/python2.7/site-packages/djangorestframework-2.3.8-py2.7.egg/rest_framework/static/rest_framework/ $rest_framework_static_dir
 fi
 
-echo "Running database evolution"
-python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py syncdb --noinput
-python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py evolve --hint --exec
+# echo "Running database evolution"
+# python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py syncdb --noinput
+# python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py evolve --hint --exec
+echo "Flushing and loading database fixtures"
+cd $OPENSHIFT_REPO_DIR/wsgi/archangel && ./flushdb.sh
 
 echo "Collecting all static assets"
 python $OPENSHIFT_REPO_DIR/wsgi/archangel/manage.py collectstatic --noinput
