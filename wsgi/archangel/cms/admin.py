@@ -120,6 +120,10 @@ class GradedSubmissionAdmin(admin.ModelAdmin):
 	list_editable = ('score',)
 	list_filter = ('submission__assignment', 'author', 'creation_date')
 
+class ForumAdmin(admin.ModelAdmin):
+	model = models.Forum
+	list_display = ('course', 'lesson', 'name')
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(models.Course, CourseAdmin)
@@ -131,3 +135,4 @@ admin.site.register(models.Lesson, LessonAdmin)
 admin.site.register(models.Assignment, AssignmentAdmin)
 admin.site.register(models.AssignmentSubmission, SubmissionAdmin)
 admin.site.register(models.GradedAssignmentSubmission, GradedSubmissionAdmin)
+admin.site.register(models.Forum, ForumAdmin)
