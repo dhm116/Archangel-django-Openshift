@@ -81,7 +81,7 @@ class AssignmentSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Assignment
-		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'file_path', 'due_date', 'points', 'lesson','submissions')
+		fields = ('id','author', 'name', 'description', 'content', 'creation_date', 'file_path', 'due_date', 'points', 'weight', 'lesson','submissions')
 
 class AssignmentSubmissionSerializer(serializers.ModelSerializer):
 
