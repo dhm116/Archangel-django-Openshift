@@ -89,6 +89,10 @@ class TeamAdmin(admin.ModelAdmin):
 		TeamMemberInline,
 	]
 
+class TeamMemberAdmin(admin.ModelAdmin):
+	model = models.TeamMember
+	list_display = ('user', 'team')
+
 class SyllabusAdmin(admin.ModelAdmin):
 	model = models.Syllabus
 	list_display = ('course', 'name', 'description','file_path', 'creation_date')
@@ -130,6 +134,7 @@ admin.site.register(models.Course, CourseAdmin)
 admin.site.register(models.CourseSection, CourseSectionAdmin)
 admin.site.register(models.CourseRoster, CourseRosterAdmin)
 admin.site.register(models.Team, TeamAdmin)
+admin.site.register(models.TeamMember, TeamMemberAdmin)
 admin.site.register(models.Syllabus, SyllabusAdmin)
 admin.site.register(models.Lesson, LessonAdmin)
 admin.site.register(models.Assignment, AssignmentAdmin)

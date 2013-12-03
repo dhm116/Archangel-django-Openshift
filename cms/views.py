@@ -105,7 +105,7 @@ class TeamMemberViewSet(viewsets.ModelViewSet):
 		serializer_class = TeamMemberSerializer
 
 		def get_queryset(self):
-				q = list(set(TeamMember.objects.filter(user__id=self.request.user.id).values_list('id', flat=True)))
+				q = list(set(TeamMember.objects.filter(Q(user__id=self.request.user.id) | Q(team__section__members__user__id=self.request.user.id)).values_list('id', flat=True)))
 				q = TeamMember.objects.filter(id__in=q)
 				return q
 
