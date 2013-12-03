@@ -79,6 +79,9 @@ class Team(models.Model):
 		unique_together = (('section', 'team_no'),)
 		ordering = ['team_no']
 
+	def __unicode__(self):
+		return u'%s -> Team %s'%(self.section, self.team_no)
+
 class TeamMember(models.Model):
 	user = models.ForeignKey(User, related_name='teams')
 	team = models.ForeignKey(Team, related_name='members')
@@ -151,7 +154,7 @@ class AssignmentSubmission(Document):
 
 class GradedAssignmentSubmission(Document):
 	# assignment = models.ForeignKey(Assignment, related_name='grades')
-	submission = models.OneToOneField(AssignmentSubmission, null=False, related_name='grade')
+	submission = models.ForeignKey(AssignmentSubmission, null=False, related_name='grade')
 	score = models.DecimalField(max_digits=5, decimal_places=2)
 
 	def _get_assignment(self):
