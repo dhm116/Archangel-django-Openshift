@@ -1,243 +1,151 @@
 [
-  {
-    "pk": 1,
-    "model": "cms.course",
+{
+    "pk": 1, 
+    "model": "cms.course", 
     "fields": {
-      "name": "CMS 101",
-      "end_date": "2013-12-13",
-      "schedule_no": "1023982",
-      "full_name": "Intro to Course Management Systems",
-      "active": false,
-      "start_date": "2013-11-08",
-      "description": "No clue how to build a CMS? Don't ask us..."
+        "name": "SWENG 588", 
+        "end_date": "2013-12-08", 
+        "schedule_no": "1231231", 
+        "full_name": "Program Understanding", 
+        "active": false, 
+        "start_date": "2013-08-26", 
+        "description": "No clue how to build a CMS? Don't ask us..."
     }
-  },
-  {
-    "pk": 1,
-    "model": "cms.coursesection",
+},
+{
+    "pk": 1, 
+    "model": "cms.coursesection", 
     "fields": {
-      "course": 1,
-      "section_no": "001"
+        "course": 1, 
+        "section_no": "001"
     }
-  },
-  {
-    "pk": 2,
-    "model": "cms.coursesection",
+},
+{
+    "pk": 1, 
+    "model": "cms.courseroster", 
     "fields": {
-      "course": 1,
-      "section_no": "002"
+        "section": 1, 
+        "group": 2, 
+        "user": 3
     }
-  },
-  {
-    "pk": 1,
-    "model": "auth.group",
+},
+{
+    "pk": 3, 
+    "model": "cms.courseroster", 
     "fields": {
-      "name": "student",
-      "permissions": []
+        "section": 1, 
+        "group": 1, 
+        "user": 2
     }
-  },
-  {
-    "pk": 2,
-    "model": "auth.group",
+},
+{
+    "pk": 5, 
+    "model": "cms.courseroster", 
     "fields": {
-      "name": "instructor",
-      "permissions": []
+        "section": 1, 
+        "group": 1, 
+        "user": 5
     }
-  },
-  {
-    "pk": 1,
-    "model": "auth.user",
+},
+{
+    "pk": 1, 
+    "model": "cms.document", 
     "fields": {
-      "username": "admin",
-      "first_name": "Admin",
-      "last_name": "Account",
-      "is_active": true,
-      "is_superuser": true,
-      "is_staff": true,
-      "last_login": "2013-10-30T00:44:07.046Z",
-      "groups": [],
-      "user_permissions": [],
-      "password": "pbkdf2_sha256$10000$COhzyrhth2dc$yWg3yJCJuG6TamFS++tY7aE8yubH66HPlDaoALtDUV8=",
-      "email": "admin@admin.com",
-      "date_joined": "2013-10-29T23:09:39.514Z"
+        "description": "", 
+        "author": 3, 
+        "creation_date": "2013-11-08T20:39:35.811Z", 
+        "content": "It is a general observation that software engineers learn about software design, programming languages, paradigms, patterns and tools, and are expected to produce high quality designs and code, often without ever having seen good examples. This approach is akin to teaching students the syntax of the English language and writing techniques, and then expecting them to become expert authors without ever having read great literary works. The course in program understanding seeks to educate students beyond their understanding of code syntax and best construction practices with analytical evaluation of software code using visualization techniques, and automatic and semi-automatic approaches to assessment of design and code quality. Through software visualization, reverse engineering and program slicing they learn to construct abstract representations of the system that can be explored in a systematic way.  Through this exploration, they begin to discriminate between systems that are inherently complex and those that are unnecessarily complicated.  Such insights are followed by techniques to transform a system to a more desirable form.\r\n\r\nProgram understanding is a hard problem to solve.  This makes it challenging and expensive to work with poorly constructed legacy systems.  It is, therefore, important to stress that we must focus on creating systems that are easier to understand, maintain and enhance in the future.  This is the most significant objective of the course, and techniques for software visualization and automatic and semi-automatic approaches to assessment and improvement of design and code quality go a long way in supporting this goal.\r\n\r\nThis course is designed help the software designers and developers become more effective in doing design and code reviews.  The software architects will find the techniques and strategies introduced in this course helpful in monitoring systems under development for architectural conformance thus preventing architectural erosion and drift.  Techniques in program understanding can be extremely useful to software maintainers as well. After all, more than half the time during maintenance is spent just understanding a system!\r\n\r\nPlease read carefully the syllabus for this course. In general, there are five assignments (done individually), five discussion boards (done in a team) and one final exam (done individually).", 
+        "file_path": "", 
+        "name": "Welcome to SWENG 588: Program Understanding"
     }
-  },
-  {
-    "pk": 2,
-    "model": "auth.user",
+},
+{
+    "pk": 2, 
+    "model": "cms.document", 
     "fields": {
-      "username": "snc137",
-      "first_name": "Stacey",
-      "last_name": "Crotti",
-      "is_active": true,
-      "is_superuser": false,
-      "is_staff": false,
-      "last_login": "2013-10-29T23:48:02Z",
-      "groups": [],
-      "user_permissions": [],
-      "password": "9D84BcK8ZsERTeP",
-      "email": "snc137@psu.edu",
-      "date_joined": "2013-10-29T23:48:03Z"
+        "description": "It has been noted that one of the fallacies of software engineering education is teaching people how to program by showing them how to write programs (Glass, 2002). Unlike classical language disciplines such as English where students are taught basic language skills and writing techniques, and required to read and critique various authors before they can go on to become copy editors or authors for major publications there is a lack of similar education for computer science and software engineering students (Corbi, 1989). Software engineers learn about software design principles, patterns, paradigms and programming languages, and are expected to produce high quality designs and code, often without ever having seen good examples. Learning by reading is an underused method in computing but is used effectively in many other disciplines.\r\n\r\nIt has been suggested that it may be so because companies protect the code for their software systems as a trade secret and so, there has been a lack of real-world high quality code to study. The situation is, however, changing with the availability of large number of high quality open source software systems. This course seeks to educate you in program understanding techniques with the objective that you learn to write good quality code by reading and critiquing these open source systems. In addition, these techniques can help you understand and possibly modify publicly available code.  You can learn to use the code as a specification when no other reliable documentation exists.\r\n\r\nThe need for software engineers to acquire the skill set to understand and critique software systems is becoming increasingly important for other reasons. Many organizations still rely on legacy systems, and more often than not these systems are significantly large and complex. As they become large and complex, it is usually the case that the legacy systems have outdated or little supporting documentation and the engineers who worked on them have long since left. It, therefore, becomes necessary to extract high level design from low level code to better understand these systems and periodically restructure them to meet future needs. If not evolved systematically, these systems can likely become too complicated making future maintenance and evolution activities difficult and cost prohibitive. This course teaches systematic application of the program understanding techniques to demonstrate how these techniques can be effective in managing complexity as a system evolves over its lifetime.\r\n\r\nHowever, understanding design of a system from its low level code is a computationally complex problem (Woods and Yang, 1996). Let us try to see why.", 
+        "author": 3, 
+        "creation_date": "2013-11-08T20:42:54.996Z", 
+        "content": "##1.1 Computational Complexity\r\n\r\nThe problems we try to solve are either (a) Decision Problems: decide whether something is true or false; for example, given n cities, is there a closed tour which visits each city exactly once, or (b) Optimization Problems: maximization or minimization of some cost function; for example, given n cities, find a closed tour with minimal cost which visits each city exactly once.\r\n\r\nIt is important to note that each optimization problem has a corresponding decision problem. So, for instance, we can cast the optimization problem stated above into a decision problem as \u201cGiven n cities, is there a closed tour with cost less than c which visits each city exactly once?\u201d\r\n\r\nA problem has a characteristic input and size; for example, the characteristic input for the tour problem is a graph of n vertices whose size is n (n \u20131) / 2 (the number of edges connecting the n vertices).\r\n\r\nA decision problem D is solvable in polynomial time if there exists an algorithm A such that (1) A takes instances of D as inputs, (2) A always outputs the correct answer \u201cyes\u201d or \u201cno,\u201d and (3) there exists a polynomial p such that the execution of A on inputs of size n always terminates in p(n) or fewer steps. Problems of type D are said to belong to the class P or the class of computationally feasible problems.\r\n\r\nA decision problem D is non-deterministically polynomial time solvable if there exists an algorithm A such that (1) A takes as inputs potential solutions to an instance of the problem D, (2) A correctly distinguishes between the correct and incorrect solutions, and (3) there exists a polynomial p such that, for each potential solution to an instance of problem D of size n, the execution of A takes at most p(n) steps. Problems of type D are said to belong to the class NP or the class of non-deterministically polynomial time solvable problems.\r\n\r\nNote that if a problem is in class NP, we are able to identify correct solutions in polynomial time if we are lucky to find one. Also note that while it is easy to show that problems in P are also in NP, it is yet to be shown that every problem in NP is also in P.\r\n\r\nA problem is NP-Complete if it belongs to the class NP and it is NP-Hard. A problem is NP-Hard if every problem in class NP can be reduced to it in polynomial time. One example of an NP-Complete is the Subgraph Isomorphism problem stated as follows:\r\n\r\nGiven a graph G = (V1, E1) and a graph H = (V2, E2), does G contain a subgraph isomorphic to H?\r\nSo, if we wish to show that a problem is computationally intractable, all we have to do is reduce a known NP-Complete problem to the given problem. We will do that for the program understanding problem in the next section.\r\n\r\n##1.2 Program Understanding Problem\r\n\r\nGiven a particular representation of expert programming knowledge and some perceived structure of a given program, one might describe the process of constructing a mapping between these two as understanding. The mapping raises the level of abstraction from purely raw source code to a more (easily understood) abstract level. So, one must create an explicit library of abstract program plan templates and various top-down and bottom-up search strategies to implement the mapping process.\r\n\r\nSuppose we are given source code consisting of a collection B of program blocks Bi, i = 1, 2, \u2026 , m. These blocks can be viewed in terms of a corresponding graph P = (B, D) where D is a set of edges Dk, k = 1, 2, \u2026, n such that the edge Di,j exists between nodes Bi and Bj if and only if a data flow exists between the program blocks.\r\n\r\nSuppose we are also given a library of program plan templates represented as a graph L = (T, C) where T is a set of templates To, o = 1, 2, \u2026 , t related to one another through data flow relationships. These relations are specified as a set C of edges, such that edge Ck,l exists between templates Tk and Tl if and only if a data flow possibility exists between them.\r\n\r\nThe program understanding problem is to determine if a correspondence exists from program blocks B to a subset of templates T. More formally, given a library of program plans L = (T, C) and a source program P = (B, D), does there exist at least one subgraph of the library Ls = (Ts, Cs) where templates Ts and constraints Cs among the templates are matched to the source program by a mapping function X defined as follows:\r\n\r\nX maps every program block Bi to a member of Ts, and\r\nX maps every program data flow edge Di,k to corresponding member Cu,v of Cs, where u = X(Di) and v = X(Dk)\r\n\r\nIt can be shown that program understanding problem is NP-Hard by reduction from the Subgraph Isomorphism problem which is known to be NP-Hard. Recall, Subgraph Isomorphism problem can be stated as:\r\n\r\nGiven a graph G = (V1, E1) and a graph H=(V2,E2), does G contain a subgraph isomorphic to H?\r\nThe transformation to a program understanding problem can be done as follows:\r\n\r\nEvery vertex V1 in G is a program template, and every edge E1 in G signifies a data flow between templates. Every vertex V2 in H is a program block and each edge E2 in H is a data flow between blocks. A mapping between a program P and a subset of a library of related templates T exists if and only if H is an isomorphic subgraph of G. Furthermore, this transformation can clearly be done in polynomial time.\r\n\r\nComputational intractability implies it is not possible to automatically derive high-level understanding of a system from its low-level code. In practice, therefore, software engineers use numerous techniques such as reverse engineering, visualization and metrics to systematically investigate and understand systems using their code as the specification when no other reliable documentation exists.\r\n\r\n##1.3 Objective of the Program Understanding Course\r\n\r\nWe just established that (automatic) program understanding is a hard problem to solve. This makes it challenging and expensive to work with poorly constructed legacy systems. As the proverb goes, \u201cPay me now or pay me much more later.\u201d It is important to stress then that we must focus on creating systems that are easier to understand, maintain and enhance in the future. This is the most significant objective of the course; you will learn techniques for visualization and automatic/semi-automatic approaches to assessment and improvement of design and code quality that go a long way in supporting this goal.\r\n\r\nOne of the central concepts underlying all of these techniques is structural complexity of a system \u2013 the organization and interrelationship among its constituent elements. A system may be organized into modules (cohesive units of implementation such as a class, package or sub-system) and these modules may have interdependencies (associations that couple one module to another). Highly cohesive modules that have lower coupling indicate lower structural complexity. Coupling and cohesion have been found to interdependently affect effort \u2013 the ease of understanding, developing, maintaining and enhancing a system.\r\n\r\n##1.4 Case Study: The Structural Complexity of Software\r\n\r\nTo study the effects of structural complexity on effort, Darcy et al (2005) conducted an experiment to test the following three hypotheses:\r\n\r\nHypothesis 1: For more highly cohesive programs, maintenance effort is lower\r\nHypothesis 2: For more highly coupled programs, maintenance effort is higher\r\nHypothesis 3: For more highly coupled programs, higher levels of cohesion reduce maintenance effort\r\n\r\nUsing 17 software engineers, they performed perfective maintenance task on two types of problems:\r\n\r\nRegression analysis enhancement written in procedural style with C programming language\r\nDatabase functionality enhancement written in OO style with C++ language\r\nThere were 4 code variations set up for the enhancement task:\r\n\r\nHigh coupling \u2013 High cohesion\r\nHigh coupling \u2013 Low cohesion\r\nLow coupling \u2013 High cohesion\r\nLow coupling \u2013 Low cohesion\r\n\r\nThe time required to complete the maintenance task was measured yielding the following interesting results:\r\n\r\nHypothesis 1 could not be accepted suggesting that it is not necessarily the case that more cohesive programs should require less maintenance effort.\r\nHypothesis 2 could not be accepted suggesting that it is not necessarily the case that more coupled programs should require more maintenance effort.\r\nHypothesis 3, however, was acceptable suggesting that for more highly coupled programs, higher levels of cohesion reduce maintenance effort.\r\nThe important takeaway of this study was that the two attributes, coupling and cohesion, together shows a relationship where coupling is the main and cohesion is the moderator of that relationship in bringing down the maintenance effort.\r\n\r\nThe way the authors explain their result is using cognitive studies as a basis which suggest that (a) it is more efficient to work with small chunks of information, and (b) thinking that requires the usage of long-term memory will take longer or more effort.\r\n\r\nIn case of high coupling we are saturated at short-term memory and need to use long-term memory because coupling brings in chunks (programs) of information that need to be processed. Within that situation, when the chunk (program) is itself very cohesive, then maintenance effort is actually less compared to when the chunk is less cohesive.\r\n\r\nTherefore, it is not only beneficial in keeping the structural complexity down (when possible) but also beneficial to manage it effectively (when it cannot be avoided). We will look at techniques for doing both in this course.", 
+        "file_path": "", 
+        "name": "Program Understanding Problem"
     }
-  },
-  {
-    "pk": 3,
-    "model": "auth.user",
+},
+{
+    "pk": 3, 
+    "model": "cms.document", 
     "fields": {
-      "username": "dhm116",
-      "first_name": "Doug",
-      "last_name": "McCall",
-      "is_active": true,
-      "is_superuser": false,
-      "is_staff": false,
-      "last_login": "2013-10-29T23:50:54Z",
-      "groups": [],
-      "user_permissions": [],
-      "password": "pbkdf2_sha256$10000$COhzyrhth2dc$yWg3yJCJuG6TamFS++tY7aE8yubH66HPlDaoALtDUV8=",
-      "email": "dhm116@psu.edu",
-      "date_joined": "2013-10-29T23:50:54Z"
+        "description": "", 
+        "author": 3, 
+        "creation_date": "2013-11-08T20:42:55.092Z", 
+        "content": "", 
+        "file_path": "", 
+        "name": "Spell your name"
     }
-  },
-  {
-    "pk": 4,
-    "model": "auth.user",
+},
+{
+    "pk": 4, 
+    "model": "cms.document", 
     "fields": {
-      "username": "cxw970",
-      "first_name": "Christopher",
-      "last_name": "Wolf",
-      "is_active": true,
-      "is_superuser": false,
-      "is_staff": false,
-      "last_login": "2013-10-29T23:51:32Z",
-      "groups": [],
-      "user_permissions": [],
-      "password": "u35X9URnPZGX4vC",
-      "email": "cxw970@psu.edu",
-      "date_joined": "2013-10-29T23:51:32Z"
+        "description": "Given the immense scale and complexity of today\u2019s software systems, effective visualization techniques are vital for not only facilitating their understanding but also for monitoring the impact newly implemented changes will have on the structural complexity of such systems. Software visualization techniques can provide diagrammatic representations of a system\u2019s requirements and design in the early phases of its development lifecycle but their most significant benefit is in analyzing code and design during the maintenance and evolution phases to prevent architectural erosion and drift that can lead systems into becoming excessively complex or complicated. These techniques are also useful in understanding non-documented legacy systems where code is the only specification there is to work with.", 
+        "author": 3, 
+        "creation_date": "2013-12-03T00:46:41.940Z", 
+        "content": "2.1 Software Visualization\n\nSoftware visualization is defined as \u201cthe use of the crafts of typography, graphic design, animation and cinematography with modern human-computer interaction and computer graphics technology to facilitate both the human understanding and effective use of computer software\u201d (Price et al., 1998). Since software visualization techniques are fundamentally concerned with facilitating software comprehension, they have been used for algorithm visualization \u2013 as a pedagogical aid for complex algorithms and data structures, and program visualization \u2013 to help software engineers understand large complex software systems. This chapter focuses on program visualization from a software engineering perspective.\n\nThe software comprehension needs vary widely based on the stage of a software system\u2019s development lifecycle. For example, concept-oriented representations are needed to facilitate a deeper understanding of the requirements prior to the design phase. During the design phase, the visualization of structural complexity is vital because it provides a means to evaluate architectural design decisions and their subsequent impact on the overall design of the system. Visualizing the dynamic behavior of a system is important for identifying bottlenecks for performance tuning purposes. Beyond their initial development, software systems must continually evolve to meet ongoing changes in the requirements and technology. The ability of a software system to survive is dependent upon its architectural structure and the effective management of architectural changes as the system evolves over time. Such ongoing evolution presents substantial challenges as the members of development teams often transition over time and as new specialists are brought in to facilitate re-engineering efforts.  Visualization of the structure of large scale systems is particularly important for enabling engineers to grasp the magnitude of the system at hand, as well as monitor the impact newly implemented changes will have on its architecture.\n\n2.1.1 Desirable Qualities Of Software Visualization Systems\n\nOne of the goals in creating an effective visualization system is to concentrate on constructing systems with good cognitive economy; a strategy that seeks to minimize the cognitive load on the user by reducing the amount of information handled by the user as well as eliminating any tasks and information that are not relevant to the problem at hand (Tudoreanu, 2003). Young and Munroe (1998) describe a series of important features that characterize good software visualization systems. Systems should be well structured and easy to navigate with the effective use of landmarks to prevent the user from becoming confused. The visualization should possess high information content with a low but well-structured visual complexity in order to provide the user with as much information as possible without eliciting cognitive overload. It is important that the visualization system have the flexibility to allow the user to navigate through a complex hierarchy at the level of detail and granularity best suits their needs, particularly when visualizing large-scale systems. The representation should be resilient to small changes or shifts in the information content so the users do not have to readjust their understanding of the visualization. If visual metaphors are used, they should represent familiar concepts in an informative and easily recognizable fashion. When mapping either 2D or 3D data to a visual metaphor, there are two key criteria that must be considered, namely, the expressiveness and effectiveness of a visual metaphor (MacKinlay, 1986). The \u2018expressiveness\u2019 criterion relates to how well the visual metaphor conveys all of the desired information while the \u2018effectiveness\u2019 criteria relates to how successfully the metaphor depicts the information. Additional properties of good visualization systems include an approachable user interface with intuitive mechanisms for navigation and control that allow the user to interact with the system from different visual viewpoints (Young and Munroe, 1998).\n\n2.2 Visualization Techniques for Software Analysis and Design\n\nUML (Booch et al., 1999) is a visual language most familiar to software engineers and is designed to model different aspects of software intensive systems. Its greatest benefit comes from abstracting away the details of the underlying implementation and providing abstract representations that help develop a broad understanding of the system under consideration. It provides multiple perspectives that cater to the needs of many different stakeholders. Figure 1, for instance, shows a use case diagram depicting actors of a system and their corresponding use cases. Such diagrams allow requirements engineers, early in the development of a software system, to establish all external entities (actors) that will use a system and their intended purpose of use (use cases). Such goal-oriented approaches to requirements engineering takes a user-centric view and leads to development of systems that are highly usable.\n\n![some-diagram](https://cms.psu.edu/WorldCampus/201213SP/201213SPWD___RSWENG588_001/_assoc/Course_Files/lesson_supplements/image02.jpg)\n\nBased on the example shown in Figure 1, an architect can use this broad functional understanding of the pet health information system along with its non-functional requirements and design constraints and come up with a logical decomposition of the system into its constituent subsystems. While many forces may influence its logical structure, Figure 2 shows the logical architecture of the pet health information system created using low coupling and high cohesion, and separation of concerns as the guiding design principles. Related use cases are grouped into their respective subsystems, and aspects related to presentation, business logic and utility classes are separated into different layers.\n\n![](https://cms.psu.edu/WorldCampus/201213SP/201213SPWD___RSWENG588_001/_assoc/Course_Files/lesson_supplements/image03.jpg)\n\nIndividual use cases become a basis for further analysis and design. Figure 3, for instance shows detailed interactions of an actor (through the GUI) with the pet health information system. Such detailed analysis helps a designer discover objects inside the system carrying out operations and collaborating with each other to fulfill the responsibilities of a given use case.\n\n![](https://cms.psu.edu/WorldCampus/201213SP/201213SPWD___RSWENG588_001/_assoc/Course_Files/lesson_supplements/image04.jpg)\n\nA designer using this detailed analysis can create a design blueprint that can be handed over to a developer to implement. One such blueprint is shown in Figure 4. It captures the software classes, their attributes and operations, and relationships among these classes.\n\n![](https://cms.psu.edu/WorldCampus/201213SP/201213SPWD___RSWENG588_001/_assoc/Course_Files/lesson_supplements/image05.jpg)\n\n![](https://cms.psu.edu/WorldCampus/201213SP/201213SPWD___RSWENG588_001/_assoc/Course_Files/lesson_supplements/image05.jpg)\n\nThe example shows only a small subset of possible perspectives UML offers to requirements engineers, architects, designers and developers. It is, however, clear how these visual perspectives can be extremely helpful in conveying the essence of a system that goes a long way in aiding system comprehension. While this example focused on forward engineering, it is possible to reverse engineer an existing system to discover its architecture (as shown in Figure 2) and detailed design (as shown in Figure 4) using UML reverse engineering tools.\n\n2.3 Visualization Techniques for Software Maintenance and Evolution\n\nThe ability of a software system to survive is not only dependent on a good architectural design but also the effective management of architectural changes as the system evolves over time. During software maintenance, re-engineering efforts are frequently employed to improve or enhance the existing code structure in an attempt to improve the overall architectural quality. Eick et al. (2000) describe three general categories of change that occur in software: (a) adaptive changes occur when new functionality is added to enhance a system; (b) corrective changes are made to correct defects in software; and (c) perfective changes (or re-engineering) are implemented to improve the system\u2019s structure and, ultimately, its maintainability. Such ongoing maintenance activities can often lead to \u2018design erosion\u2019 arising from a multitude of factors such as changes that violate the original design principles, imprecise requirements, time pressure leading to poor design decisions, programmer variability and/or inexperience, as well as inadequate version control practices (Eick et al., 2001). At times, design erosion in large scale systems becomes so extensive that it necessitates redesigning the entire system from scratch rather than continuing to extend the existing design (van Gurp, 2002). Effective techniques for the visualization of large scale architecture can help prevent design erosion by allowing engineers to readily detect violations of architectural design principles as they are introduced into the code base, as well as monitor the impact that newly implemented changes have on the system architecture.\n\n2.3.1 Structural Complexity in Software Architecture\n\nSoftware architecture is viewed as \u201cthe structure of the components of a program/system, their interrelationships, and principles and guidelines governing their design and evolution over time\u201d (Clements, 1996). The structural complexity of software architecture manifests itself as the number of interacting components within a software system and the relationship between these components. Software complexity is dependent upon the hierarchical organization of a code base, beginning at the method level and migrating up through the class, package and component levels, as well as the nature of the dependencies that bind these components together.\n\nDuring software maintenance, increased complexity is often inadvertently introduced as the number of interdependencies between parts of the system grows and design goals are violated. Such increasing complexity may paradoxically impede its survivability. As would be predicted by Lehman\u2019s laws (Lehman and Belady, 1985), such emergent design would be expected to become increasing complex over the evolution of the software unless work is done to reduce or maintain it. Left unmanaged, excessive structural complexity can become increasingly problematic for developers responsible for ongoing development, testing, and maintenance.\n\nThe quality of an object-oriented design and its inherent complexity is often evaluated by examining the nature of the interdependencies between its components. Although interdependencies are required for collaboration, architectural designs comprised of highly interdependent structural components tend to be rigid, un-reusable and hard to maintain (Chidamber and Kemerer, 1994). Complexity\u2019s relative impact varies depending on the abstraction level in the design hierarchy. Software engineers assess structural complexity in a software system at higher levels of abstraction, such as a class, package, or component level, by measuring coupling and cohesion. Excessively complex systems tend to have high coupling and low cohesion.\n\nHigh coupling implies that there are many interacting parts forming a dependency graph with several nodes (representing software packages or classes) and edges (representing relationships between software packages or classes). Ideally, the coupling, which is measured with respect to the number of afferent (incoming) and efferent (outgoing) dependencies, should be low. When a software package has many other packages depending on it, hence many incoming dependencies, but has few outgoing dependencies, it is viewed as a very stable package. As Martin (2003) states, \u201cA package dealing with lots of incoming dependencies is very stable because it requires a great deal of work to reconcile any changes with all the dependent packages.\u201d In contrast, packages that have many outgoing dependencies and few incoming dependencies are viewed as very instable. Ideally, packages should depend only on packages that are more stable. Software engineers also strive to develop systems with high relational cohesion; systems with low cohesion imply that parts within the system have many unrelated responsibilities.\n\nTo maintain good architectural integrity, software should also adhere to the Acyclic Dependencies Principle (Martin, 2003), which emphasizes that the dependency structure between packages should be a directed acyclic graph with no cycles in the dependency structure. Cycles in a dependency graph, especially large ones, form tangled code which becomes increasingly difficult to understand, maintain, and test.\n\nA brief overview of visualization approaches that are specifically designed to represent these structural features of software are presented in the following sections. More details on these would be covered in subsequent lessons.\n\n2.3.1.1 Conceptual Architecture Views\n\nIn architectural diagrams, elements (packages or classes) in a software system are mapped to a representative cell within a box diagram (Figure 5). The arrangement of cells in an architectural diagram conveys important properties about the system. It can reveal information about the composition of the architecture by revealing nested elements that are contained within a parent cell. Architectural diagrams can also be used to discern architectural layering patterns when elements are arranged in a top-down fashion with respect to the direction of their dependencies. Ideally, elements at the higher hierarchical levels should only depend on those at the lower levels with no cycles in the dependency structure. Although cyclic dependencies between classes or methods within a package are often unavoidable, such dependencies among packages lead to highly coupled code that is difficult to maintain and extend since all of the packages involved in a tangle will be integrally tied to each other and affected by any change.\n\nFigure 5 illustrates how conceptual architectural diagrams can be used to identify layering violations and reveal increased complexity in the dependency structure that has been introduced within a system as it evolves over time. Violations appear as arrows showing any upward (cyclic) dependencies; the downward (acceptable) dependencies are not shown to minimize unnecessary information content. Such extensive cyclic dependencies between packages substantially increase the difficulty of making changes to a given package, leading to architectural decay.\n\n2.3.1.2 Hierarchical Dependency Views\n\nAlthough conceptual architectural diagrams provide insight into the evolution of high-level system architecture and distribution of system dependencies, it is important to be able to discern the nature of the dependency relationships that exist between components. Hierarchical dependency views enhance the visualization of complex dependency relationships among elements of a software system by displaying them in a graph and partitioning the graph into clusters \u2013 a highly cohesive group of elements loosely coupled with the rest of the system. Elements in a cluster can be easily packaged together into a single module. Nodes in the graph that are integrally tied in cyclic dependency relationships can also be identified and grouped into tangles suggesting parts of the system that have become rigid, fragile and difficult to reuse. By grouping nodes that are close to one another in the dependency graph, or those that are involved in tangled dependency relationships, the overall visual complexity of the system representation is effectively reduced.\n\nFigure 6 illustrates a hierarchical view of an open-source application. Due to limited real estate, it is hard to see the names of the elements and the number of their dependencies and the tangles (in the tool used to create this artifact, you can zoom into the area of interest).  This structural representation, however, does give one a sense of how complicated a module is and where the tangled dependencies lie.  Clusters are shown in gray and tangles are shown in brown.\n\n![](https://cms.psu.edu/WorldCampus/201213SP/201213SPWD___RSWENG588_001/_assoc/Course_Files/lesson_supplements/image07.jpg)\n\n2.3.1.3 Dependency Structure Matrices\n\nOne of the major drawbacks of dependency graphs is that even on a small scale with partitioning, the visualization of the dependency relationships becomes increasingly cluttered and difficult to discern as the number of dependencies between components increases. This problem is further compounded when cyclic dependencies are involved. While this type of structural representation is useful when examining small portions of a system, the complex dependency relationships in large-scale systems are not effectively represented using this visualization technique.\n\nDependency structure matrices (Browning, 2001) have been employed to provide more scalable, metric-enhanced representations of software structure. Dependency structure matrix visualizations can reveal architectural patterns within a given system. Hierarchical partitioning algorithms can be used to produce a matrix in which the rows and columns are ordered so that items only use other items below or to their right. In the absence of cyclic dependencies, all items would produce a lower triangular matrix; any dependencies above the matrix diagonal are indicative of a cyclic dependency between the packages. Within the matrix, a numeric value within a cell can be used to indicate the number of dependencies from the column item to the row item. Therefore, when a package\u2019s row is populated with a large number of dependencies, this is indicative of a package that is heavily used by many other items (afferent coupling). In turn, when a package\u2019s column is populated by a large number of dependencies, this is indicative that a package uses many other items (efferent coupling).\n\nFigure 7 illustrates the visualization representation of software structure that can be achieved using dependency structure matrix views. Such visualizations provide important insights into components with potentially problematic dependencies. The highlighted area in Figure 7 reveals a group of highly interdependent packages within an open source software system. Packages involved in such a \u201ctangled\u201d relationship, e.g., those with cyclic dependencies, are easy to recognize because those dependencies lie above the matrix diagonal. Dependency matrix views can also provide insight into emerging architectural patterns. The \u2018impl\u2019 package (marked as highlighted row and column) in Figure 6 illustrates one such pattern. This package follows a \u201cchange propagator\u201d pattern because it uses many packages and, in turn, many packages use it (Sangal et al., 2005). Any changes to this package, therefore, have the potential to impact the entire system. Using the dependency matrix approach for software visualization, it is also easy to recognize packages that function primarily as utility packages. These packages are used by a large number of other packages but have few outgoing dependencies. The package marked with an ( \u00e8 ) in Figure 7 is an example of a utility package. Such utility packages can help foster good modular design.\n\n2.3.2 Metric-Enriched Visual Metaphors\n\nMetric-enhanced visualization approaches are used to map either 2D or 3D data to a visual metaphor. The polymetric view approach developed by Lanza (2003) provides an example of how metric-enriched visual metaphors can be used to facilitate the visualization of structure in object-oriented systems from both a coarse and fine-grained perspective. Coarse-grained software visualization provides a means to evaluate the overall system quality by providing an overview of the system with respect to its size, complexity and structure. Coarse-grained visualization is useful for locating and understanding important classes and inheritance hierarchies and also provides a useful means for identifying unused or dead code. Fine-grained visualization is used to understand the concrete implementation of classes and class hierarchies as well as to detect common patterns or coding styles. Such fine-grained visualization provides a means to identify key methods in a class, understand the role of a class, and ultimately build a mental image of a class with respect to method invocations and state access.\n\nUsing polymetric views (Lanza and Ducasse, 2003), the software classes, or their abstractions, are represented by nodes and the graph edges correspond to the relationships between the classes. Up to five metric measurements are rendered on a single node to enrich the information content of the visual representation. These node characteristics include node size, which is a reflection of the size of the class; node color, which reflects the value of a metric measurement whereby higher metric values are represented by darker colors; and node position for which the X, Y coordinates can reflect two additional metric measurements. A sample illustration of how this metric-enhanced visualization strategy is used to display a model view of system complexity is shown in Figure 8 whereby the number of attributes is represented by the node width, the number of methods as the height, and the number of lines of code as the color metric for each class node.\n\nThe versatility of polymetric views for both the coarse and fine-grained visualization of large-scale systems has been widely reported (Lanza, 2003; Lanza and Ducasse, 2003; Lanza and Ducasse, 2005; Nierstasz et al., 2005). The coarse-grained \u2018System Complexity\u2019 view (Figure 9) of an open source graphics program was created using the Moose Reengineering tool (Nierstasz et al., 2005) with the number of methods per class as the node height, the number of attributes as the node width, and the number of lines of code being represented by the color metric. The edges between the nodes represent the inheritance relationship between classes. Therefore, the longer and darker nodes that lie deep within the inheritance hierarchy correspond to classes that possess a hundreds of methods and may be indicative of a potential system hotspot. The course grained system view is also valuable for identifying procedural classes (e.g., those with numerous methods, many LOC and few attributes) which will appear in the system complexity view as nodes that are tall, dark and isolated.\n\nThe fine-grained polymetric view (Lanza, 2003; Lanza and Ducasse, 2003) is represented by a Class Blueprint that serves to decompose the class into layers; attributes and methods are subsequently assigned to each layer (Figure 10A). The layers are organized from left to right with a method node on the left being connected to a node on the right when it either accesses or invokes the node on the right, which in turn represents an attribute or method. From left to right, the layers include an: (a) initialization layer, which contains methods responsible for creating an object and initializing the value of its attributes; (b) external interface layer, which contains methods representing the interface of a class to the outside world; (c) internal implementation layer, which contains methods not visible to the outside world; (d) accessor layer, which contains methods whose sole purpose is to get and set values of attributes and (e) attribute layer, which contains all of the class attributes. Therefore, the methods placed in the first three layers (from left to right) are ordered based on their invocation sequence. The attributes are connected to methods in the other layers via access relationships. The Class Blueprint view is also tremendously useful for visualizing the interaction complexity between classes. The Class Blueprint shown in Figure 10B, which was generated using the Moose Reengineering tool (Nierstasz et al, 2005), demonstrates the internal structure and detailed interaction complexity between 7 \u2018io\u2019-related classes in an open source drawing program.\n\nMetric-enhanced visual metaphors can also be used to monitor changes in software structure as it evolves over time. The evolutionary matrix view developed by Lanza and Ducasse (2003) allows engineers to visualize the point in time where new classes were introduced (or old classes were removed), and to monitor the rate of growth (or decline) in class size. Using the \u2018evolutionary view\u2019 representation, all classes are represented in rows while successive versions are represented in the columns (Figure 11). Using the polymetric view approach, different metric combinations can also be used to enhance the information visualization as needed. For example, the width of the class node is proportionally scaled according to the number of methods, while the height of the node is proportional to the number of class attributes. The evolutionary matrix view is particularly beneficial for identifying patterns of software change. As described by Lanza and Ducasse (2003), these patterns include the identification of: (a) persistent classes, which have survived intact over the course of the system\u2019s evolution and may represent dead code that has not been removed (b) dayfly classes, which have existed during only one or two system releases and may represent an idea that was implemented then later removed; (c) pulsar classes, which are those that have undergone repeated modifications making them grow and shrink frequently; such classes are expensive to maintain as every version requires changes to the class; and (d) supernova classes, which exhibit a sudden increase in size perhaps in response to a massive shift in functionality requirements. Figure 11 illustrates how an evolutionary matrix view can be used to visualize patterns of change across release versions. In this example, an evolutionary matrix view of changes that have occurred within a \u2018plugin manager\u2019 package of an open source drawing program over four release versions are shown. In addition, periods of evolutionary stagnation can also be discerned and are characterized by long periods with little growth in the number of classes.\n\n2.4 Conclusions\n\nThe importance of good visualization techniques for managing complexity during design restructuring or architecture reengineering cannot be overstated; without such visualization capability, it is not be feasible for engineers to fully comprehend the impact that software changes would ultimately have on a large-scale system. As is evident, no single visualization approach can provide an all-encompassing view of software system architecture and structural complexity that will be appropriate for all tasks. The visualization tools and techniques selected will be dependent upon the needs and unique perspective of the stakeholders.\n\n2.5 Case Study: Visualizing Software Systems as Cities\n\nWettel and Lanza (2007) have developed a 3D visualization technique for object-oriented systems using a city metaphor. Classes are represented as buildings and packages as city districts. Software metrics are mapped to the visual properties of the buildings and districts. They have implemented a neat tool called CodeCity that can be used to visualize fairly large systems using this metaphor. The tool provides a number of ways to navigate and interact with a software system and its elements.\n\nReferences\nPrice, B.A; Baecker, R.M.; Small, I.S. A Principled Taxonomy of Software Visualization. Journal of Visual Languages and Computing 1998, 4(3), 211-266.\nTudoreanu, M.E. Designing Effective Program Visualization Tools for Reducing User\u2019s Cognitive Effort, In ACM Symposium on Software Visualization, San Diego, CA, 2003.\nYoung, P. and Munroe, M. Visualizing Software in Virtual Reality, In IEEE International Workshop on Program Comprehension (IWPC\u201998), Ischia, Italy, June 24-26, 1998.\nMacKinlay, J.D. Automating the Design of Graphical Presentation of Relational Information. ACM Transaction on Graphics, 1986 5(2), 110-141.\nBooch, G.; Rumbaugh, J.; Jacobson, I. The Unified Modeling Language User Guide, 1999, Addison-Wesley, Boston, MA.\nEick, S.G.; Schuster, P.; Mockus, A. et al. Visualizing Software Changes. National Institute of Statistical Sciences, Technical Report No. 113. December 2000.\nEick, S.G.; Graves, T.L.; Karr, A.F. et al. Does Code Decay? Assessing the Evidence from Change Management Data. IEEE Transactions on Software Engineering. 2001, 27 (1), 1 \u2013 11.\nvan Gurp, J.; Bosch, J. Design Erosion: problems and causes. Journal of Systems and Software. 2002. 61,105-119.\nClements, P. and Northrop, L.M. Software Architecture: An Executive Overview, Software Engineering Institute, Carnegie Mellon University. 1996, Technical Report CMU/SEI-96-TR-003.\nLehman, M.M.; Belady, L.A. Eds. Program Evolution: Processes of Software Change. 1985. Academic Press Professional, Inc.\nChidamber, S.; Kemerer, S. A Metrics Suite for Object Oriented Design. IEEE Transactions on Software Engineering. 1994, 20(6), 476-493.\nMartin, R. Agile Software Development. 2003. Prentice Hall, New Jersey.\nBrowning, T.R. Applying the Design Structure Matrix to System Decomposition and Integration Problems: A Review and New Direction. IEEE Transactions on Engineering Management. 2001, 48 (3), 292 \u2013 306.\nSangal, N.; Jordan, E.; Sinha, V.; Jackson, D. Using dependency models to manage complex software architecture, In Proceedings of the Object-Oriented Programming Systems, Languages and Applications, San Diego, CA, October 16\u201320, 2005.\nLanza, M. Object-oriented Reverse Engineering \u2013 Course-grained, Fine-Grained, and Evolutionary Software Visualization. Ph.D. thesis, University of Berne, May 2003.\nLanza, M. Polymetric Views \u2013 A Lightweight Visual Approach to Reverse Engineering. IEEE Transactions on Software Engineering, 2003, 29(9): 782-795.\nDucasse, S.; Lanza, M.. CodeCrawler - An Extensible and Language Independent 2D and 3D Software Visualization Tool. In Tools for Software Maintenance and Reengineering, RCOST/Software Technology Series. Franco Angeli 2005, pp. 74-94\nNierstasz, O., S. Ducasse and T. Girba. 2005. The Story of Moose: an Agile Reengineering Environment. Proceedings ESEC-FSE \u201905, pp. 1-10, September 5-9, 2005, Lisbon, Portugal.", 
+        "file_path": "", 
+        "name": "Visualizing Software Systems"
     }
-  },
-  {
-    "pk": 5,
-    "model": "auth.user",
+},
+{
+    "pk": 5, 
+    "model": "cms.document", 
     "fields": {
-      "username": "aua230",
-      "first_name": "Adbulatif",
-      "last_name": "Alsaidi",
-      "is_active": true,
-      "is_superuser": false,
-      "is_staff": false,
-      "last_login": "2013-10-29T23:52:32Z",
-      "groups": [],
-      "user_permissions": [],
-      "password": "P73TJLrWLZdeaKw",
-      "email": "aua230@psu.edu",
-      "date_joined": "2013-10-29T23:52:33Z"
+        "description": "In this lesson we will try to explore how one can gain an understanding of the overall system structure and its complexity using a design structure matrix (DSM). A DSM is also known as a dependency structure matrix, dependency source matrix and a dependency structure method.", 
+        "author": 3, 
+        "creation_date": "2013-12-03T00:46:41.942Z", 
+        "content": "3.1 Introduction\r\n\r\nA DSM (Steward, 1981) is a square matrix (has equal number of rows and columns) mapping dependencies or relationships among elements of a system. All elements appear both in the rows and the columns, and dependencies are signaled at the intersection points of the items in the matrix. For example, Figure 1(a) shows a DSM for a software system that has been decomposed into four modules, namely, A, B, C, and D. The rows and columns of the matrix represent the same modules. The dependencies of a module are read down a column. For instance, reading down the first column, we can see that Module A depends on Module C. We also see that Module A does not depend on Modules B or D as those cells are empty. These dependencies are marked in Figure 1(b) and are known as uses dependencies (as in Module A uses Module C). Reading across a row gives us dependencies on a module. For instance, reading across the first row, we can see that Modules C and D depend on Module A. These dependencies are marked in Figure 1(c) and are known as used by dependencies (as in Module A is used by Modules C and D). The identity diagonal represents a dependency of a module on itself.\r\n\r\nA DSM provides a simple, compact, and visual representation of a system. DSMs to date have been used not only in component-based and architecture decomposition and integration analysis but also in organization, project, product planning, and management contexts (Lindemann, 2009). The use of DSMs in software engineering has mostly focused on understanding design rules (Sullivan et al., 2001) and has been increasingly incorporated into reverse engineering and architecting tools such as Lattix (2011) and Structure 101 (2011).\r\n\r\nThe DSM showed in Figure 1 is a binary matrix; its cells are populated with zeros and ones. Binary matrices are useful because they show presence or absence of a relationship between pairs of elements of a system. As shown in Figure 2, a matrix can also show weighted dependencies. For instance, reading down column 1 we can see that Module A depends on Modules C with dependency strength of 7.\r\n\r\n3.2 Partitioning a DSM\r\n\r\nWe can reorder the subsystems in the DSM through a process called partitioning. The objective of partitioning is to sequence the DSM rows and columns such that the new DSM arrangement does not contain any feedback loops or cycles, thus transforming the DSM into a lower triangular form. A feedback loop or cycle exists when there are circular dependencies (for instance, an element X depends on an element Y and element Y in turn depends on element X). For complex systems, it is highly unlikely that simple row and column manipulation will result in a lower triangular form. Therefore, the objective changes from eliminating the feedback loops to moving them as close as possible to the diagonal (this form of the matrix is known as block triangular).\r\n\r\nFigure 3 shows this reordering for the DSM in Figure 2. The reordering yields a block triangular matrix consisting of three groups or blocks, the first consisting of Module D, the second consisting of Modules A and C (since they are coupled together due to circular dependency), and the third consisting of Module B. Note that there are no dependencies (and hence, no cycles) in the area of the matrix above the marked blocks.\r\n\r\nEqually, it is possible to learn about what elements of the system might possibly have to be reworked (e.g. split into two elements or perhaps merged) to achieve a better architecture. For example, Figure 4 shows combining of Modules A and C into a compound Module A-C which contains Module A and Module C (Note that what we have called \"Module\" is simply an abstraction -it can be a small abstraction representing a single class or a large abstraction representing an entire subsystem containing thousands of classes).\r\n\r\nAs Figure 5 shows, we can now collapse Module A-C so that we don't see Modules A and C. The dependency that Module D has on Module A-C is an aggregation of the dependencies that Module D had on Module A and Module C. By default, the aggregation is a simple summation although other approaches to aggregation can also be configured. Notice the resulting matrix is now a lower triangular matrix. There are no dependencies (and hence, no cycles) in the upper area of the matrix above the diagonal.\r\n\r\nPartitioning can be done manually or by invoking a partitioning algorithm. The overall goal of DSM partitioning algorithms is to order a system starting with modules that use most of the other modules and ending with those that provide most to the others while grouping modules that are highly interdependent together in the ordering.\r\n\r\nDSMs thus can give us a sense of which modules underlie other modules and how coupled and cohesive they are. For example, the system represented by the DSM in Figure 5 can be envisioned as a layered system (shown in Figure 6) with the first block as the top layer, followed by the second block, and, finally, the third block as the bottom layer.\r\n\r\n3.2.1 Partitioning Algorithms\r\n\r\nThere are several DSM partitioning algorithms. They are mostly similar expect in how they identify cyclic dependencies. All partitioning algorithms proceed as follows (Lindemann, 2009):\r\n\r\nIdentify system elements that have no dependencies from the rest of the elements in the matrix. These elements can easily be identified by observing an empty row in the DSM. Place those elements to the left and top of the DSM. Remove them from further consideration.\r\n\r\nIdentify system elements that have no dependencies on other elements in the matrix. These elements can easily be identified by observing an empty column in the DSM. Place those elements to the right and bottom of the DSM. Remove them from further consideration.\r\n\r\nIf after steps 1 and 2 there are no remaining elements in the DSM, then the matrix is completely partitioned; otherwise, the remaining elements contain cycles (at least one).\r\n\r\nThere are many ways of determining a cycle but one such method is called path searching. In path searching, dependencies are traced either backwards or forwards from a given element until the element is encountered twice. All elements between the first and second occurrence of this element constitute a cycle.\r\n\r\nGroup the elements involved in a single cycle into one representative element and go to step 1.\r\nOnce elements are grouped, topological sort can be used to order them so that dependencies between the groupings go in the same direction.\r\n\r\nExample:\r\n\r\nFigure 7 shows how partitioning works:\r\n\r\n7(a) shows the original dependency matrix,\r\n7(b) shifts element F to the left and top because it has no dependencies (empty row); we ignore F\u2019s row and column in subsequent analysis\r\n7(c) shifts element E to the left and top because it has no dependencies (empty row); we ignore E\u2019s row and column in subsequent analysis\r\n7(d) shifts element A to the right and bottom because it does not depend on anything (empty column); we ignore A\u2019s row and column in subsequent analysis\r\n7(e) shifts element B to the right and bottom because it does not depend on anything (empty column); we ignore B\u2019s row and column in subsequent analysis\r\nThe remaining elements (C and D) have a cycle so we collapse them into a single representative element called C-D. There are no more elements remaining at this point and 7(f) shows a completely partitioned matrix. Notice the matrix is in a lower triangular form at this point.\r\n\r\n3.3 Tearing a DSM\r\n\r\nTearing is the process of choosing the set of dependencies that create feedback loops that, if removed from the matrix (and then the matrix is re-partitioned), will render the matrix lower-triangular. The dependencies that we remove from the matrix are called \"tears\". No optimal method exists for tearing, but Lindemann (2009) recommends keeping the tears to a minimum (also referred to sometimes as a minimum feedback set).\r\n\r\n3.4 Case Study: Haystack\r\n\r\nTo demonstrate how effective they can be for understanding and managing complex software systems, Sangal et al (2005) analyzed a large information retrieval system called Haystack using DSMs. The objective of the study was to try and answer the following key questions:\r\n\r\nCan the dependency model capture the architecture and scale of a program with significant complexity?\r\nCan the dependency model help in the management of the program\u2019s architecture?\r\nCan the dependency model ease future maintenance of the architecture?\r\nThe analysis of Haystack demonstrated the usefulness of this approach. In particular,\r\n\r\nDSMs do appear to scale well when dealing with large complex systems, and\r\nThe approach is fairly lightweight yielding information that can be highly useful in capturing, communicating, maintaining and managing architectures of large complex systems\r\n\r\nReferences\r\nLattix, version 7.0, 2011. http://www.lattix.com.\r\nLindemann, U., 2009. Technical DSM Tutorial. http://dsmweb.org.\r\nSangal, N., Jordan, E., Sinha, V. and Jackson, D., 2005. Using Dependency Models to Manage Complex Software Architecture. In: Proceedings of the Object-Oriented Programming Systems, Languages and Applications, San Diego, CA.\r\nSteward, D.V., 1981. The design structure system: A method for managing the design of complex systems. IEEE Transactions on Engineering and Management, 28(3), 71\u201374.\r\nStructure 101, Version 3.5 Build 1527, 2011. http://www.headwaysoftware.com.\r\nSullivan, K.J., Griswold, W.G., Cai, Y., Hallen, B., 2001. The structure and value of modularity in software design. ACM SIGSOFT Software Engineering Notes, 26(5), 99\u2013108.", 
+        "file_path": "", 
+        "name": "Analyzing Complex Systems: Matrix-Based Methods"
     }
-  },
-  {
-    "pk": 1,
-    "model": "cms.courseroster",
+},
+{
+    "pk": 1, 
+    "model": "cms.syllabus", 
     "fields": {
-      "section": 1,
-      "group": 2,
-      "user": 3
+        "course": 1
     }
-  },
-  {
-    "pk": 2,
-    "model": "cms.courseroster",
+},
+{
+    "pk": 2, 
+    "model": "cms.lesson", 
     "fields": {
-      "section": 2,
-      "group": 2,
-      "user": 3
+        "course": 1, 
+        "week_no": 1
     }
-  },
-  {
-    "pk": 3,
-    "model": "cms.courseroster",
+},
+{
+    "pk": 4, 
+    "model": "cms.lesson", 
     "fields": {
-      "section": 1,
-      "group": 1,
-      "user": 2
+        "course": 1, 
+        "week_no": 2
     }
-  },
-  {
-    "pk": 4,
-    "model": "cms.courseroster",
+},
+{
+    "pk": 5, 
+    "model": "cms.lesson", 
     "fields": {
-      "section": 2,
-      "group": 1,
-      "user": 4
+        "course": 1, 
+        "week_no": 3
     }
-  },
-  {
-    "pk": 5,
-    "model": "cms.courseroster",
+},
+{
+    "pk": 3, 
+    "model": "cms.assignment", 
     "fields": {
-      "section": 1,
-      "group": 1,
-      "user": 5
+        "due_date": "2013-11-11T06:00:00Z", 
+        "lesson": 2, 
+        "points": "100", 
+        "weight": "1"
     }
-  },
-  {
-    "pk": 1,
-    "model": "cms.document",
-    "fields": {
-      "description": "This course's schedule",
-      "author": 3,
-      "creation_date": "2013-11-08T20:39:35.811Z",
-      "content": "# Welcome to CMS 101",
-      "file_path": "",
-      "name": "Welcome to CMS 101"
-    }
-  },
-  {
-    "pk": 2,
-    "model": "cms.document",
-    "fields": {
-      "description": "Spelling your name",
-      "author": 3,
-      "creation_date": "2013-11-08T20:42:54.996Z",
-      "content": "# Sometimes it's hard to spell your name\r\nLesson description",
-      "file_path": "",
-      "name": "Who are you?"
-    }
-  },
-  {
-    "pk": 3,
-    "model": "cms.document",
-    "fields": {
-      "description": "",
-      "author": 3,
-      "creation_date": "2013-11-08T20:42:55.092Z",
-      "content": "",
-      "file_path": "",
-      "name": "Spell your name"
-    }
-  },
-  {
-    "pk": 1,
-    "model": "cms.syllabus",
-    "fields": {
-      "course": 1
-    }
-  },
-  {
-    "pk": 2,
-    "model": "cms.lesson",
-    "fields": {
-      "course": 1,
-      "week_no": 1
-    }
-  },
-  {
-    "pk": 3,
-    "model": "cms.assignment",
-    "fields": {
-      "due_date": "2013-11-11T06:00:00Z",
-      "lesson": 2,
-      "points": "100",
-      "weight": "1.000"
-    }
-  }
+}
 ]
