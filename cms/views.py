@@ -16,6 +16,7 @@ from rest_framework.renderers import (
 )
 from django.forms.models import model_to_dict
 from django.db.models import Q, F
+import django_filters
 import datetime
 # Create your views here.
 
@@ -61,9 +62,18 @@ class PermissionViewSet(viewsets.ModelViewSet):
 				# Restrict permissions to those that you have
 				return self.request.user.user_permissions.all()
 
+class CourseFilter(django_filters.FilterSet):
+	member = django_filters.NumberFilter(name='sections__members__user__id', distinct=True)
+	group = django_filters.CharFilter(name='sections__members__group__name', distinct=True)
+
+	class Meta:
+		model = Course
+		fields = ['name', 'schedule_no', 'member', 'group']
+
 class CourseViewSet(viewsets.ModelViewSet):
 		model = Course
 		serializer_class = CourseSerializer
+		filter_class = CourseFilter
 
 		def get_queryset(self):
 				# Restrict courses to those that you belong to
